@@ -31,13 +31,9 @@ defmodule Program do
   end
 
   defp execute(instructions, line_num, env, output) do
-    if line_num >= Enum.count(instructions) do
-      env
-    else
-      {line_num, env, output} = execute_line(instructions[line_num], line_num, env, output)
+    {line_num, env, output} = execute_line(instructions[line_num], line_num, env, output)
 
-      execute(instructions, line_num, env, output)
-    end
+    execute(instructions, line_num, env, output)
   end
 
   defp execute_line(["cpy", from, to], line_num, env, output) do
